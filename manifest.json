@@ -1,0 +1,43 @@
+{
+	"manifest_version": 3,
+	"name": "Thread Pause Extension",
+	"version": "1.0.0",
+	"description": "A browser extension to pause JavaScript execution on any website",
+	"permissions": ["activeTab", "scripting", "commands"],
+	"host_permissions": ["*://*/*"],
+	"commands": {
+		"toggle-pause": {
+			"suggested_key": {
+				"default": "Ctrl+Shift+p",
+				"mac": "Command+Shift+p"
+			},
+			"description": "Toggle JavaScript pause"
+		}
+	},
+	"action": {
+		"//": "default_popup param is the UI of the extension, it is displayed when the extension is clicked",
+		"default_icon": {
+			"16": "./icons/16.png",
+			"32": "./icons/32.png"
+		},
+		"default_title": "Pause Thread"
+	},
+	"icons": {
+		"16": "./icons/16.png",
+		"32": "./icons/32.png",
+		"48": "./icons/48.png",
+		"128": "./icons/128.png"
+	},
+	"//": "content is the script that runs on web pages, can modify DOM, has limited access to extension API (see it like the hands)",
+	"content_scripts": [
+		{
+			"matches": ["*://*/*"],
+			"js": ["hands.js"],
+			"run_at": "document_start"
+		}
+	],
+	"///": "background is the process script that runs when the extension is installed / active, has access to extension API, runs all the time (see it like the brain)",
+	"background": {
+		"service_worker": "brain.js"
+	}
+}

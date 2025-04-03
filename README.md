@@ -1,1 +1,1 @@
-# extension_pause_thread
+# PAUSE ANY WEBSITE
