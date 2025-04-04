@@ -48,7 +48,7 @@ chrome.commands.onCommand.addListener(async (command) => {
                     isDebugging = true;
                     currentTabId = tab.id;
                 } catch (error) {
-                    console.error("Failed to attach debugger:", error);
+                    // console.error("Failed to attach debugger:", error);
                     await safeDetachDebugger(tab.id);
                 }
             } else {
@@ -57,7 +57,7 @@ chrome.commands.onCommand.addListener(async (command) => {
                     await chrome.debugger.sendCommand({ tabId: tab.id }, "Debugger.resume");
                     await safeDetachDebugger(tab.id);
                 } catch (error) {
-                    console.error("Failed to detach debugger:", error);
+                    // console.error("Failed to detach debugger:", error);
                     // Force cleanup of state even if detach fails
                     isDebugging = false;
                     currentTabId = null;
