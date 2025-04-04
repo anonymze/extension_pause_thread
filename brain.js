@@ -40,7 +40,7 @@ chrome.commands.onCommand.addListener(async (command) => {
             if (!isDebugging) {
                 try {
                     // Attach debugger and enable it
-                    await chrome.debugger.attach({ tabId: tab.id });
+                    await chrome.debugger.attach({ tabId: tab.id }, "1.3");
                     await chrome.debugger.sendCommand({ tabId: tab.id }, "Debugger.enable");
                     
                     // Pause execution
