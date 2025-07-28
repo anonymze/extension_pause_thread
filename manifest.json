@@ -1,10 +1,9 @@
 {
-	"manifest_version": 3,
+	"manifest_version": 2,
 	"name": "Javascript Pause Extension",
 	"version": "1.0.0",
 	"description": "A browser extension to pause JavaScript execution on any website",
-	"permissions": ["activeTab", "scripting", "debugger", "commands"],
-	"host_permissions": ["*://*/*"],
+	"permissions": ["activeTab", "debugger", "*://*/*"],
 	"commands": {
 		"toggle-pause": {
 			"suggested_key": {
@@ -13,6 +12,13 @@
 			},
 			"description": "Toggle JavaScript pause"
 		}
+	},
+	"browser_action": {
+		"default_icon": {
+			"16": "./icons/16.png",
+			"32": "./icons/32.png"
+		},
+		"default_title": "Pause JavaScript"
 	},
 	"action": {
 		"default_icon": {
@@ -28,6 +34,7 @@
 		"128": "./icons/128.png"
 	},
 	"background": {
-		"service_worker": "brain.js"
+		"scripts": ["brain.js"],
+		"persistent": false
 	}
 }
